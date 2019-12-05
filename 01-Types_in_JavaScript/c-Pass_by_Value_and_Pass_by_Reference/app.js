@@ -26,13 +26,15 @@ const obj = {
    }
 };
 // shallow clones don't penetrate into nested objects
-const clone = Object.assign({}, obj); // shallow clone
-const clone2 = { ...obj }; // shallow clone
-const superClone = JSON.parse(JSON.stringify(obj)); // a complete clone is performed 
+const shallowClone = Object.assign({}, obj); // shallow clone
+const shallowClone2 = { ...obj }; // shallow clone
+// deep clone
+const deepClone = JSON.parse(JSON.stringify(obj));
 
-obj.b = 5; // changing the value property c on the initial object doesn't change the object property c on the cloned object
-obj.c.deep = 'i changed you'; // this will modify the cloned objects' c.deep nested object property value
-console.log(obj);
-console.log(clone);
-console.log(clone2);
-console.log(superClone); // if we modify the original object's properties, the super clone object does not change at all
+obj.b = 5; // changing the value of property c on the initial object doesn't change the value of property c on the cloned object
+obj.c.deep = 'i changed you'; // this will modify the shallow cloned objects' nested object property value (c.deep)
+
+console.log('original obj', obj);
+console.log('Object.assign shallow clone', shallowClone);
+console.log('spread operator shallow clone', shallowClone2);
+console.log('deep clone', deepClone); // if we modify the original object's properties, the deep clone object does not change at all
