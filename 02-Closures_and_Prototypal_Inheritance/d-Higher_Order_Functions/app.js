@@ -28,7 +28,7 @@ function letUserLogin(user) {
    return grantAccessTo(user);
 }
 letUserLogin("Jack");
-// even more simpliefied by using a higher order function
+// even more simplyfied by using a higher order function
 function authenticate(verify) {
    let arr = [];
    for(let i = 0; i < verify; i++) {
