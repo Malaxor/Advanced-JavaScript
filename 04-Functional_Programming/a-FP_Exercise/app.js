@@ -7,18 +7,40 @@ const user = {
 };
 //Implement a cart feature:
 // 1. Add items to cart.
-function addToUserCart(user, { name, price }) {
-   const item = {
-      name,
-      price
-   }
-   user.cart.push(item);
-}
-addToUserCart(user, { name: 'socks', price: 10 });
-console.log(user.cart);
 // 2. Add 3% tax to item in cart
 // 3. Buy item: cart --> purchases
 // 4. Empty cart
+
+const compose = (a, b) => (...args) => a(b(...args));
+
+function purchasesItem(...fns) {
+   return fns.reduce(compose);
+}
+
+purchasesItem(emptyCart, buyItem, applyTaxToItem, addItemToCart)(user, { name: 'laptop', price: 200 });
+
+function addItemToCart(user, item) {
+   const updateCart = [ ...user.cart, item ];
+   return Object.assign({}, user, { cart: updateCart });
+}
+
+function applyTaxToItem(user) {
+   const { cart } = user;
+   const taxRate = 0.03;
+   const updateCart = cart.map(({ name, price }) => ({ 
+      name,
+      price: (price * taxRate) + price
+   }));
+   return Object.assign({}, user, { cart: updateCart });
+}
+
+function buyItem(user) {
+   return Object.assign({}, user, { purchases: user. cart });
+}
+
+function emptyCart(user) {
+   return Object.assign({}, user, { cart: [] });
+}
 
 //Bonus:
 // accept refunds.

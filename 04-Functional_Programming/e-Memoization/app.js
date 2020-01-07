@@ -1,4 +1,4 @@
-// Memoization is a form Caching, which itself is a way of storing values to use them later
+// Memoization is a form Caching, which itself is a way of storing values to use later
 const cache = {};
 function memoizeAddTo80(n) {
    if(n in cache) {
