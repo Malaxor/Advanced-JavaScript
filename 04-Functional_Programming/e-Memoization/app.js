@@ -30,6 +30,7 @@ console.log(memoize(5));
 
 function ZmemoizeAddTo80(n) {
    const cache = {};
+
    if(n in cache) {
       return cache[n];
    }
