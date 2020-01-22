@@ -1,0 +1,1 @@
+// JS arrays are dynamic. The engine automatically allots memory to arrays when they increase in size

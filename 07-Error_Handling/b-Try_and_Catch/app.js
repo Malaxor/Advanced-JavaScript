@@ -6,7 +6,7 @@ function fail() {
    } // try doesn't work without the catch or finally block
    catch(error) {
       console.log('ERROR!', error); // displays error information, including stack trace
-   } // irrespective of what happes in try and catch, code written within finally will execute
+   } // irrespective of what happes in try and catch blocks, code written within finally will execute
    finally {
       console.log('still good');
    }
