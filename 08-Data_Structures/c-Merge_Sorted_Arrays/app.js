@@ -1,30 +1,27 @@
 function mergeSortedArr(arr1, arr2) {
-   const mergedArr = [];
-   let array1Item = arr1[0];
-   let array2Item = arr2[0];
-   let i = 1;
-   let j = 1;
-   // basic check of input
-   if(arr1.length === 0) {
-      return arr2;
-   }
-   if(arr2.length === 0) {
-      return arr1;
-   }
-   while(array1Item !== undefined || array2Item !== undefined) {
-      if(array1Item < array2Item) {
-         mergedArr.push(array1Item);
-         array1Item = arr1[i];
-         i++;
+   const result = [];
+   let counter = 0;
+   let index1 = 0;
+   let index2 = 0;
+   const sumLength = array1.length + array2.length;
+
+   while(counter < sumLength) {
+      const isArr1Empty = index1 >= arr1.length;
+      const isArr2Empty = index2 >= arr2.length;
+
+      if(!isArr1Empty && (isArr2Empty || arr1[index1] < array2[index2])) {
+         result[counter] = arr1[index1];
+         index1++;
       }
       else {
-         mergedArr.push(array2Item);
-         array2Item = arr2[j];
-         j++;
+         result[counter] = arr2[index2];
+         index2++;
       }
-   }
-   return mergedArr;
+      counter++;
+   } 
+   return result;
 }
-const array1 = [0, 1, 2];
-const array2 = [3, 4, 5];
+const array1 = [0, 2, 3, 5, 90];
+const array2 = [1, 2, 8];
+
 console.log(mergeSortedArr(array1, array2));
