@@ -6,23 +6,25 @@ function mergeSortedArr(arr1, arr2) {
    
    for(let i = 0; i < sumLength; i++) {
 
-      if(arr1[pointer1] === undefined) {
-         result.push(arr2[pointer2]);
-         pointer2++;
-         continue;
-      }
-      if(arr2[pointer2] === undefined) {
-         result.push(arr1[pointer1]);
-         pointer1++;
-         continue;
-      }
-      
-      if(arr1[pointer1] < arr2[pointer2]) {
-         result.push(arr1[pointer1]);
+      // if(arr1[pointer1] === undefined) {
+      //    result.push(arr2[pointer2]);
+      //    pointer2++;
+      //    continue;
+      // }
+      // if(arr2[pointer2] === undefined) {
+      //    result.push(arr1[pointer1]);
+      //    pointer1++;
+      //    continue;
+      // }
+      let leftArray = arr1[pointer1] === undefined ? Infinity : arr1[pointer1];
+      let rightArray = arr2[pointer2] === undefined ? Infinity : arr2[pointer2];
+
+      if(leftArray < rightArray) {
+         result.push(leftArray);
          pointer1++;
       }
       else {
-         result.push(arr2[pointer2]);
+         result.push(rightArray);
          pointer2++
       }
    }
