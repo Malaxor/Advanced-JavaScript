@@ -31,7 +31,7 @@ function mergeSortedArr(arr1, arr2) {
    return result;
 }
 
-const array1 = [0, 2, 3, 5, 90];
-const array2 = [1, 2, 8];
+const array1 = [1, 2, 8];
+const array2 = [0, 2, 3, 5, 90];
 
-console.log(mergeSortedArr(array1, array2));
+console.log(mergeSortedArr(array2, array1));
